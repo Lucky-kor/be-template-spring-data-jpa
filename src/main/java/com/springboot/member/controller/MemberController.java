@@ -1,6 +1,7 @@
 package com.springboot.member.controller;
 
 import com.springboot.response.MultiResponseDto;
+import com.springboot.response.PageInfo;
 import com.springboot.response.SingleResponseDto;
 import com.springboot.member.dto.MemberPatchDto;
 import com.springboot.member.dto.MemberPostDto;
@@ -75,7 +76,7 @@ public class MemberController {
     @GetMapping
     public ResponseEntity getMembers(@Positive @RequestParam int page,
                                      @Positive @RequestParam int size) {
-        Page<Member> pageMembers = memberService.findMembers(page - 1, size);
+        Page<Member> pageMembers = memberService.findMembers(page, size);
         List<Member> members = pageMembers.getContent();
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mapper.membersToMemberResponseDtos(members),
