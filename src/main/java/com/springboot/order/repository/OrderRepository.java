@@ -1,9 +1,11 @@
 package com.springboot.order.repository;
 
+import com.springboot.order.dto.OrderResponseDto;
 import com.springboot.order.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface OrderRepository extends JpaRepository<Order,Long> {
+import java.util.Optional;
 
-}
+public interface OrderRepository extends JpaRepository<Order,Long> {
+ }

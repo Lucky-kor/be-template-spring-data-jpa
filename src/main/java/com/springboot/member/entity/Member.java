@@ -36,7 +36,6 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList();
-
     public void addOrder(Order order) {
         orders.add(order);
         if (order.getMember() != this){

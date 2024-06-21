@@ -21,7 +21,7 @@ public class MemberPatchDto {
 
             message = "휴대폰 번호는 010으로 시작하는 11자리 숫자와 '-'로 구성되어야 합니다")
     private String phone;
-
+//멤버의 상태는 바뀔 수 있어야한다.
     @Setter
     private Member.MemberStatus memberStatus;
 

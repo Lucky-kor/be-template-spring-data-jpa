@@ -18,8 +18,8 @@ public class MemberResponseDto {
     private String email;
     private String name;
     private String phone;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
     private Member.MemberStatus memberStatus;
     private List<OrderResponseDto> orders;
- }
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+}

@@ -1,14 +1,14 @@
 package com.springboot.order.entity;
 
 import com.springboot.member.entity.Member;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,13 +32,24 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-
     public void addMember(Member member){
         if(!member.getOrders().contains(this)){
             member.addOrder(this);
         }
         this.member = member;
     }
+
+//    1:N 에서는 onetomany mappedBy - 나를 참고하고있는 객체의 변수명;
+//    1인쪽이기때문에 다에 해당하는 객체를 리스트로 add메서드로 추가
+    @OneToMany(mappedBy = "order")
+    private List<OrderCoffee> orderCoffees = new ArrayList();
+    public void addOrderCoffee(OrderCoffee orderCoffee){
+        orderCoffees.add(orderCoffee);
+        if(orderCoffee.getOrder() != this){
+            orderCoffee.addOrder(this);
+        }
+    }
+
 
     public enum OrderStatus {
         ORDER_REQUEST(1, "주문 요청"),

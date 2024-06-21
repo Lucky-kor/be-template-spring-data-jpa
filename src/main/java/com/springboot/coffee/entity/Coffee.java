@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -29,15 +30,16 @@ public class Coffee {
     private CoffeeStatus coffeeStatus = CoffeeStatus.COFFEE_FOR_SALE;
 
     @Column(nullable = false,updatable = false)
-    private LocalDate createdAt = LocalDate.now();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false,name = "LAST_MODIFIED_AT")
-    private LocalDate modifiedAt = LocalDate.now();
+    private LocalDateTime modifiedAt = LocalDateTime.now();
 
     public enum CoffeeStatus{
         COFFEE_FOR_SALE("판매중"),
         COFFEE_SOLD_OUT("판매 중지");
-        @Getter
+
+
         private String status;
 
         CoffeeStatus(String status) {
