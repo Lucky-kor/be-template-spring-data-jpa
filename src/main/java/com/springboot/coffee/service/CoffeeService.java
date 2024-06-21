@@ -43,10 +43,17 @@ public class CoffeeService {
 //       유효성 검증
         Coffee findCoffee = findVerifiedCoffee(coffee.getCoffeeId());
 //       변경 가능한 사항은 korName; engName, price,status
-        Optional.ofNullable(coffee.getKorName()).ifPresent(korName -> findCoffee.setKorName(korName));
-        Optional.ofNullable(coffee.getEngName()).ifPresent(engName -> findCoffee.setEngName(engName));
+        Optional.ofNullable(coffee.getKorName())
+                .ifPresent(korName -> findCoffee.setKorName(korName));
+        Optional.ofNullable(coffee
+                .getEngName()).ifPresent(engName -> findCoffee.setEngName(engName));
 //        가격은 int type이라 null값이 안들어오니 of로 바꿔주었다.
-        Optional.of(coffee.getPrice()).ifPresent(price -> findCoffee.setPrice(price));
+
+        Optional.of(coffee.getPrice())
+                .ifPresent(price -> findCoffee.setPrice(price));
+
+        Optional.ofNullable(coffee.getCoffeeStatus())
+                .ifPresent(coffeeStatus -> findCoffee.setCoffeeStatus(coffeeStatus));
 
         findCoffee.setModifiedAt(LocalDateTime.now());
 

@@ -39,7 +39,6 @@ public class Coffee {
         COFFEE_FOR_SALE("판매중"),
         COFFEE_SOLD_OUT("판매 중지");
 
-
         private String status;
 
         CoffeeStatus(String status) {
